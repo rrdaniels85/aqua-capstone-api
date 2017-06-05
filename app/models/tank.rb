@@ -5,4 +5,6 @@ class Tank < ApplicationRecord
 
   validates :name, presence: true
   validates :water, presence: true
+  enum water: { salt: 'Salt', fresh: 'Fresh' }
+
 end

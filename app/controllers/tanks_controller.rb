@@ -13,9 +13,9 @@ class TanksController < ProtectedController
 
   # GET /tanks/1
   # GET /tanks/1.json
-  # def show
-  #   render json: Tank.find(params[:id])
-  # end
+  def show
+    render json: Tank.find(params[:id])
+  end
 
   def create
     #    @tank = Tank.new(tank_params)

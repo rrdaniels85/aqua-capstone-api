@@ -2,8 +2,8 @@
 API="http://localhost:4741"
 URL_PATH="/tanks"
 TOKEN="BAhJIiUwZWE3NmEwNmJhNzQ3NjEwNDhlZmFhZTBlMzczYTg5YwY6BkVG--1ffe820340deceb7c8e14e61d0886dca502ed930"
-NAME="Dory's Tank"
-WATER="salt"
+NAME="Marlin's Tank"
+WATER="Salt"
 
 curl "${API}${URL_PATH}" \
  --include \
