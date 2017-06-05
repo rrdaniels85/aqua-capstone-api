@@ -1,51 +1,59 @@
-class TanksController < ApplicationController
-  before_action :set_tank, only: [:show, :update, :destroy]
+# frozen_string_literal: true
+
+class TanksController < ProtectedController
+  before_action :set_tank, only: [:update, :destroy]
 
   # GET /tanks
+  # GET /tanks.json
   def index
-    @tanks = Tank.all
+    @tanks = current_user.tanks.all
 
     render json: @tanks
   end
 
   # GET /tanks/1
+  # GET /tanks/1.json
   def show
-    render json: @tank
+    render json: Tank.find(params[:id])
   end
 
-  # POST /tanks
   def create
-    @tank = Tank.new(tank_params)
+    #    @tank = Tank.new(tank_params)
+
+    @tank = current_user.tanks.build(tank_params)
 
     if @tank.save
-      render json: @tank, status: :created, location: @tank
+      render json: @tank, status: :created
     else
       render json: @tank.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /tanks/1
+  # PATCH/PUT /tanks/1.json
   def update
     if @tank.update(tank_params)
-      render json: @tank
+      head :no_content
     else
       render json: @tank.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /tanks/1
+  # DELETE /tanks/1.json
   def destroy
     @tank.destroy
+
+    head :no_content
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tank
-      @tank = Tank.find(params[:id])
-    end
+  def set_tank
+    @tank = current_user.tanks.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def tank_params
-      params.require(:tank).permit(:name, :type, :user_id)
-    end
+  def tank_params
+    params.require(:tank).permit(:name, :water)
+  end
+
+  private :set_tank, :tank_params
 end
