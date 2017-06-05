@@ -2,7 +2,7 @@
 
 # Aquarium Capstone App api README
 
-My aquarium management application.
+This application is targeted at aquarium enthusiasts. It allows them, after signing in, to create multiple tanks with attributes. The user can then keep an inventory of the animals that they keep in their tanks (ex. fish, snails, etc.).
 
 ## Aquarium Application ERD
 
