@@ -28,7 +28,7 @@ class AnimalsController < ProtectedController
   end
 
   def destroy
-    @animal = Animal.joins(:tank).where(tanks: {user_id: current_user.id, id: params[:tank_id]}).find_by(animals: {id: params[:id]})
+    @animal = Animal.joins(:tank).where(tanks: { user_id: current_user.id, id: params[:tank_id]}).find_by(animals: {id: params[:id]})
     if @animal.destroy
       render json: { id: @animal.id }
     else
@@ -39,6 +39,6 @@ class AnimalsController < ProtectedController
   private
 
   def animal_params
-    params.require(:animal).permit(:name, :material)
+    params.require(:animal).permit(:name, :species, :color)
   end
 end
