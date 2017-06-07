@@ -28,10 +28,11 @@ class AnimalsController < ProtectedController
   # end
 
   def update
-    if current_user.tanks.find(params[:tank_id]).animals.find(params[:id]).update(animal_params)
-      head puts animal_params
+    @animal = current_user.tanks.find(params[:tank_id]).animals.find(params[:id])
+    if @animal.update(animal_params)
+      head :no_content
     else
-      render json: @tank.errors, status: :unprocessable_entity
+      render json: @animal.errors.to_a, status: :unprocessable_entity
     end
   end
 
