@@ -36,13 +36,20 @@ class AnimalsController < ProtectedController
   end
 
   def destroy
-    @animal = Animal.joins(:tank).where(tanks: { user_id: current_user.id, id: params[:tank_id]}).find_by(animals: {id: params[:id]})
-    if @animal.destroy
-      render json: { id: @animal.id }
-    else
-      render json: { id: @animal.id }, status: :unprocessable_entity
-    end
+    current_user.tanks.find(params[:tank_id]).animals.find(params[:id]).destroy
+
+    head :no_content
   end
+
+  #
+  # def destroy
+  #   @animal = Animal.joins(:tank).where(tanks: { user_id: current_user.id, id: params[:tank_id]}).find_by(animals: {id: params[:id]})
+  #   if @animal.destroy
+  #     render json: { id: @animal.id }
+  #   else
+  #     render json: { id: @animal.id }, status: :unprocessable_entity
+  #   end
+  # end
 
   private
 
