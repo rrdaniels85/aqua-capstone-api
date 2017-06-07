@@ -17,13 +17,21 @@ class AnimalsController < ProtectedController
     end
   end
 
-  def update
-    @animal = Animal.joins(:tank).where(tanks: {user_id: current_user.id}).find(params[:id])
+  # def update
+  #   @animal = Animal.joins(:tank).where(tanks: {user_id: current_user.id}).find(params[:id])
+  #
+  #   if @animal.update_attributes(animal_params)
+  #     render json: @animal
+  #   else
+  #     render json: @animal.errors.to_a, status: :unprocessable_entity
+  #   end
+  # end
 
-    if @animal.update_attributes(animal_params)
-      render json: @animal
+  def update
+    if current_user.tanks.find(params[:tank_id]).animals.find(params[:id]).update(animal_params)
+      head puts animal_params
     else
-      render json: @animal.errors.to_a, status: :unprocessable_entity
+      render json: @tank.errors, status: :unprocessable_entity
     end
   end
 
