@@ -2,7 +2,12 @@
 
 # Aquarium Capstone App api README
 
-This application is targeted at aquarium enthusiasts. It allows them, after signing in, to create multiple tanks with attributes. The user can then keep an inventory of the animals that they keep in their tanks (ex. fish, snails, etc.).
+This application is targeted at aquarium enthusiasts. It allows them, after signing in, to create multiple tanks with attributes. The user can then keep an inventory of the animals that they keep in their tanks (ex. fish, snails, etc.). This allows them to keep their aquariums more organized.
+
+## Application Links
+-   [Client-side Repository](https://github.com/rrdaniels85/aqua-capstone-client)
+-   [Deployed Client App](https://rrdaniels85.github.io/aqua-capstone-client/)
+-   [Deployed API](https://still-castle-88480.herokuapp.com/)
 
 ## Aquarium Application ERD
 
