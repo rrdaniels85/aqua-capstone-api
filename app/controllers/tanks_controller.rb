@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TanksController < ProtectedController
-  before_action :set_tank, only: [:update, :destroy]
+  before_action :set_tank, only: [:show, :update, :destroy]
 
   # GET /tanks
   # GET /tanks.json
@@ -14,7 +14,7 @@ class TanksController < ProtectedController
   # GET /tanks/1
   # GET /tanks/1.json
   def show
-    render json: Tank.find(params[:id])
+    render json: @tank
   end
 
   def create
@@ -33,7 +33,7 @@ class TanksController < ProtectedController
   # PATCH/PUT /tanks/1.json
   def update
     if @tank.update(tank_params)
-      head :no_content
+      render json: @tank
     else
       render json: @tank.errors, status: :unprocessable_entity
     end
