@@ -17,16 +17,6 @@ class AnimalsController < ProtectedController
     end
   end
 
-  # def update
-  #   @animal = Animal.joins(:tank).where(tanks: {user_id: current_user.id}).find(params[:id])
-  #
-  #   if @animal.update_attributes(animal_params)
-  #     render json: @animal
-  #   else
-  #     render json: @animal.errors.to_a, status: :unprocessable_entity
-  #   end
-  # end
-
   def update
     @animal = current_user.tanks.find(params[:tank_id]).animals.find(params[:id])
     if @animal.update(animal_params)
@@ -41,16 +31,6 @@ class AnimalsController < ProtectedController
 
     head :no_content
   end
-
-  #
-  # def destroy
-  #   @animal = Animal.joins(:tank).where(tanks: { user_id: current_user.id, id: params[:tank_id]}).find_by(animals: {id: params[:id]})
-  #   if @animal.destroy
-  #     render json: { id: @animal.id }
-  #   else
-  #     render json: { id: @animal.id }, status: :unprocessable_entity
-  #   end
-  # end
 
   private
 
