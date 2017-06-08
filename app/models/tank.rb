@@ -6,5 +6,6 @@ class Tank < ApplicationRecord
 
   validates :name, presence: true
   validates :water, presence: true
+  validates_length_of :name, maximum: 60
   enum water: { Salt: 'Salt', Fresh: 'Fresh' }
 end
