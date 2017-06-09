@@ -11,30 +11,31 @@ This application is targeted at aquarium enthusiasts. It allows them, after sign
 
 ## Aquarium Tracker Application ERD
 
-For my project, my main objectives include the user, tank, and animals relationships.
+Before: For my project, my main objectives include the user, tank, and animals relationships.
 However, if time permits, I will add a note/log relationship as well to tanks as depicted in this ERD. This additional relationship is a stretch objective.
 
 ![alt text](http://i.imgur.com/fGAiYtm.jpg)
 
+Follow Up: I was able to include the user, tank and animal relationships as I had planned. Due to time constraints, I was unable to meet the stretch objective and did not include the note/log relationship.
+
 ## Technologies Used
 
-For this application, I built my API using Ruby on Rails as my back-end framework and postgresql for my database. 
+For this application, I built my API using Ruby on Rails as my back-end framework and postgresql for my database.
 
 ## General Approach
 
-**Planning**
+**Planning:**
 Once I had decided on my main project theme and functionality, I created an ERD to reflect how I wanted to structure my back-end. In my initial planning, I included two non-user resources as my main goal and included on additional resource as a stretch goal. My resources were two has_many relationship. A user has many tanks and a tank has many animals.
 
-**Execution**
-The first resource, tanks, was relatively straightforward. It was a single has_many/belongs_to relationship. I had done this in the past. As a result, I was able to get this functionality working relatively quickly. I then tested the CRUD functionality with CURL requests.
+**Execution:**
+The first resource, tanks, was relatively straightforward. It was a direct has_many/belongs_to relationship. I had done this in the past. As a result, I was able to get this functionality working relatively quickly. I then tested the CRUD functionality with CURL requests.
 
 The bigger challenge came when I added the second table to the API. I had never done a second has_many relationship before. As a result, it took additional effort and experimentation to develop
-a controller that worked for my purposes for the animals resource.
+a controller that worked for my purposes for the animals resource. Once I was comfortable with my animals controller, I also tested this on the back end with CURL requests.
 
 ## Unsolved Problems
 
-When I first began my project, I created a stretch goal of trying to create an additional resource of notes/maintenance logs that the user could keep for each tank. However, due to unexpected issues throughout the project, I simply ran out of time. If given more time, I would like to add this additional resource because I think it would be of value to the end user. It was definitely a struggle figuring out the controller for the second has_many relationship (tank to animals) but now that I have it figured out I think I could use that same basic format for the notes/maintenance logs.
-
+When I first began my project, I created a stretch goal of trying to create an additional resource of notes/maintenance logs that the user could keep for each tank. However, due to time constraints, I was unable to incorporate this. If given more time, I would like to add this additional resource because I think it would be of value to the end user. It was definitely a struggle figuring out the controller for the second has_many relationship (tank to animals) but now that I have it figured out I think I could use that same basic format for the notes/maintenance logs.
 
 ## Dependencies
 
