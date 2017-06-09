@@ -1,20 +1,40 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# Aquarium Capstone App api README
+# Aquarium Tracker API README
 
 This application is targeted at aquarium enthusiasts. It allows them, after signing in, to create multiple tanks with attributes. The user can then keep an inventory of the animals that they keep in their tanks (ex. fish, snails, etc.). This allows them to keep their aquariums more organized.
 
-## Application Links
+## Application URL Section
 -   [Client-side Repository](https://github.com/rrdaniels85/aqua-capstone-client)
 -   [Deployed Client App](https://rrdaniels85.github.io/aqua-capstone-client/)
 -   [Deployed API](https://still-castle-88480.herokuapp.com/)
 
-## Aquarium Application ERD
+## Aquarium Tracker Application ERD
 
 For my project, my main objectives include the user, tank, and animals relationships.
 However, if time permits, I will add a note/log relationship as well to tanks as depicted in this ERD. This additional relationship is a stretch objective.
 
 ![alt text](http://i.imgur.com/fGAiYtm.jpg)
+
+## Technologies Used
+
+For this application, I built my API using Ruby on Rails as my back-end framework and postgresql for my database. 
+
+## General Approach
+
+**Planning**
+Once I had decided on my main project theme and functionality, I created an ERD to reflect how I wanted to structure my back-end. In my initial planning, I included two non-user resources as my main goal and included on additional resource as a stretch goal. My resources were two has_many relationship. A user has many tanks and a tank has many animals.
+
+**Execution**
+The first resource, tanks, was relatively straightforward. It was a single has_many/belongs_to relationship. I had done this in the past. As a result, I was able to get this functionality working relatively quickly. I then tested the CRUD functionality with CURL requests.
+
+The bigger challenge came when I added the second table to the API. I had never done a second has_many relationship before. As a result, it took additional effort and experimentation to develop
+a controller that worked for my purposes for the animals resource.
+
+## Unsolved Problems
+
+When I first began my project, I created a stretch goal of trying to create an additional resource of notes/maintenance logs that the user could keep for each tank. However, due to unexpected issues throughout the project, I simply ran out of time. If given more time, I would like to add this additional resource because I think it would be of value to the end user. It was definitely a struggle figuring out the controller for the second has_many relationship (tank to animals) but now that I have it figured out I think I could use that same basic format for the notes/maintenance logs.
+
 
 ## Dependencies
 
@@ -27,29 +47,24 @@ Install with `bundle install`.
 -   [`postgres`](http://www.postgresql.org)
 
 
-## Tasks
+### TANKS
 
-Developers should run these often!
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/tanks`               | `tanks#create`    |
+| GET    | `/tanks`               | `tanks#index`     |
+| SHOW   | `/tanks/:id`           | `users#show`      |
+| PATCH  | `/tanks/:id`           | `tanks#update`    |
+| DELETE | `/tanks/:id`           | `tanks#destroy`   |
 
--   `bin/rake routes` lists the endpoints available in your API.
--   `bin/rake test` runs automated tests.
--   `bin/rails console` opens a REPL that pre-loads the API.
--   `bin/rails db` opens your database client and loads the correct database.
--   `bin/rails server` starts the API.
--   `scripts/*.sh` run various `curl` commands to test the API. See below.
+### ANIMALS
 
-<!-- TODO -   `rake nag` checks your code style. -->
-<!-- TODO -   `rake lint` checks your code for syntax errors. -->
-
-## API
-
-Use this as the basis for your own API documentation. Add a new third-level
-heading for your custom entities, and follow the pattern provided for the
-built-in user authentication documentation.
-
-Scripts are included in [`scripts`](scripts) to test built-in actions. Add your
-own scripts to test your custom API. As an alternative, you can write automated
-tests in RSpec to test your API.
+| Verb   | URI Pattern              | Controller#Action |
+|--------|--------------------------|-------------------|
+| POST   | `/tanks/:id/animals`     | `animals#create`  |
+| GET    | `/tanks/:id/animals`     | `animals#index`   |
+| PATCH  | `/tanks/:id/animals/:id` | `animals#update`  |
+| DELETE | `/tanks/:id/animals/:id` | `animals#destroy` |
 
 ### Authentication
 
@@ -59,6 +74,7 @@ tests in RSpec to test your API.
 | POST   | `/sign-in`             | `users#signin`    |
 | PATCH  | `/change-password/:id` | `users#changepw`  |
 | DELETE | `/sign-out/:id`        | `users#signout`   |
+
 
 #### POST /sign-up
 
