@@ -55,7 +55,7 @@ Install with `bundle install`.
 |--------|------------------------|-------------------|
 | POST   | `/tanks`               | `tanks#create`    |
 | GET    | `/tanks`               | `tanks#index`     |
-| SHOW   | `/tanks/:id`           | `users#show`      |
+| SHOW   | `/tanks/:id`           | `tanks#show`      |
 | PATCH  | `/tanks/:id`           | `tanks#update`    |
 | DELETE | `/tanks/:id`           | `tanks#destroy`   |
 
